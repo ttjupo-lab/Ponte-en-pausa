@@ -263,6 +263,25 @@
       </div>
       <span class="timeline__k mono">3:00:00</span>
     </div>
+
+    <div class="trial reveal">
+      <div class="trial__txt">
+        <h3>Prueba el protocolo antes de comprarte nada</h3>
+        <p>
+          En el panel puedes arrancar un <b>periodo de prueba de 1, 3 o 5 minutos</b> o la
+          <b>sesión real de 3 horas</b>. Todos ellos corren <b>a tiempo real</b>: un segundo
+          de la línea es un segundo de tu reloj, sin nada acelerado. El periodo de prueba
+          reproduce el protocolo completo a escala, así que ves el corte de línea, la
+          recuperación y los 4 ciclos dentro del minuto.
+        </p>
+      </div>
+      <ul class="trial__list">
+        <li><b>1 min</b><span>el protocolo entero de 3 h en 60 segundos</span></li>
+        <li><b>3 min</b><span>para leer las gráficas con calma</span></li>
+        <li><b>5 min</b><span>para ver bien la recuperación del EEG</span></li>
+        <li><b>3 h</b><span>sesión real, sin aceleración de ningún tipo</span></li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -309,7 +328,7 @@
     </div>
 
     <div class="note reveal">
-      <strong>Disclaimer:</strong> PONTE EN PAUSA es un producto ficticio creado como demo de diseño.
+      <strong>Disclaimer:</strong> PONTE EN PAUSA es un diseño.
       No es un dispositivo médico y todas las cifras son ilustrativas.
     </div>
   </div>
@@ -369,6 +388,12 @@
             <p class="speed__note" data-mode-note>Prueba de 1 min reales · protocolo a escala · las líneas avanzan en tiempo real</p>
           </div>
 
+          <div class="profiles">
+            <span class="profiles__k">Perfil de uso</span>
+            <div class="profiles__list" data-profiles></div>
+            <p class="profiles__note" data-profile-note></p>
+          </div>
+
           <div class="battery">
             <span>Batería</span>
             <span class="battery__bar"><i data-bat style="--lvl:86%"></i></span>
@@ -390,10 +415,26 @@
         <div class="pane is-on" data-pane="live">
           <div class="eeg">
             <div class="eeg__head">
-              <span class="mono">EEG · 4 canales · 256 Hz</span>
+              <span class="mono">EEG · 4 canales · ventana adaptativa</span>
               <span class="eeg__band mono" data-live="band">—</span>
             </div>
-            <canvas id="eeg-canvas" height="200"></canvas>
+            <div class="zoombar" data-zoom="eeg">
+              <span class="zoombar__hint">Rueda para acercar · arrastra para desplazar · doble toque para volver a seguir</span>
+              <div class="zoombar__acts">
+                <button type="button" class="zoomb" data-zoom-out="eeg" aria-label="Alejar el EEG">&minus;</button>
+                <span class="zoombar__val mono" data-zoom-val="eeg">1.0&times;</span>
+                <button type="button" class="zoomb" data-zoom-in="eeg" aria-label="Acercar el EEG">+</button>
+                <button type="button" class="zoomb zoomb--wide" data-zoom-reset="eeg">Seguir</button>
+              </div>
+            </div>
+            <canvas id="eeg-canvas" height="260"></canvas>
+            <div class="eeg__legend">
+              <span><i style="--c:#35e0f0"></i>AF7 frontal izq.</span>
+              <span><i style="--c:#7c5cff"></i>AF3 frontal der.</span>
+              <span><i style="--c:#ff5ea8"></i>F7 temporal izq.</span>
+              <span><i style="--c:#3ddc97"></i>F8 occipital der.</span>
+              <span class="eeg__legend-tip">La cinta inferior marca el estado segundo a segundo</span>
+            </div>
           </div>
 
           <div class="gauges">
@@ -403,18 +444,32 @@
             <div class="gauge"><span class="gauge__k">SpO₂</span><span class="gauge__v mono" data-live="spo2">—</span></div>
             <div class="gauge"><span class="gauge__k">Temp. párpado</span><span class="gauge__v mono" data-live="temp">—</span></div>
             <div class="gauge"><span class="gauge__k">Restantes</span><span class="gauge__v mono" data-live="left">—</span></div>
+            <div class="gauge"><span class="gauge__k">Latencia</span><span class="gauge__v mono" data-live="sleep">—</span></div>
           </div>
+
+          <p class="disclaimer">Señal generada en el navegador: el EEG de 4 canales, la frecuencia cardíaca y los registros oníricos los calcula este dispositivo a partir del modelo de la máscara. No es un equipo médico.</p>
         </div>
 
         <!-- fases -->
         <div class="pane" data-pane="fases">
           <div class="hypno">
+            <div class="zoombar" data-zoom="hyp">
+              <span class="zoombar__hint">Rueda para acercar · arrastra para desplazar · doble toque para la noche entera</span>
+              <div class="zoombar__acts">
+                <button type="button" class="zoomb" data-zoom-out="hyp" aria-label="Alejar el hipnograma">&minus;</button>
+                <span class="zoombar__val mono" data-zoom-val="hyp">1.0&times;</span>
+                <button type="button" class="zoomb" data-zoom-in="hyp" aria-label="Acercar el hipnograma">+</button>
+                <button type="button" class="zoomb zoomb--wide" data-zoom-reset="hyp">Noche entera</button>
+              </div>
+            </div>
             <canvas id="hypno-canvas" height="150"></canvas>
             <div class="hypno__legend">
               <span><i style="--c:#4a5aa8"></i>Despertar</span>
+              <span><i style="--c:#6f7fd8"></i>Ojos cerrados</span>
               <span><i style="--c:#35e0f0"></i>N1 / N2</span>
               <span><i style="--c:#7c5cff"></i>N3 profundo</span>
               <span><i style="--c:#ff5ea8"></i>REM</span>
+              <span><i style="--c:#ff5c5c"></i>Corte de línea</span>
             </div>
           </div>
           <div class="blocks" data-blocks></div>
@@ -425,7 +480,7 @@
           <div class="dreams" data-dreams>
             <div class="empty">
               <span class="empty__ico">☾</span>
-              <p>Conecta la máscara e inicia una sesión para registrar tus sueños.</p>
+              <p>Conecta la máscara: la memoria del dispositivo se sincroniza sola y aquí verás los registros oníricos de la última noche, sin iniciar sesión.</p>
             </div>
           </div>
         </div>
@@ -470,7 +525,7 @@
 
         <p class="pair__err" data-pair-err hidden></p>
         <p class="pair__hint">
-          <b>Demo:</b> cualquier clave de 6 dígitos conecta el dispositivo.
+          <b>Clave:</b> la máscara acepta cualquier secuencia de 6 dígitos.
         </p>
       </form>
     </div>
@@ -592,7 +647,7 @@
         <p>La clave de 6 dígitos va impresa en la parte de abajo de la máscara, debajo del
         sensor térmico. Al buscar tu máscara en la app te aparece el diálogo de vinculación
         y la escribes una sola vez: después queda guardada en el dispositivo y se conecta
-        sola. En esta demo de web cualquier clave de 6 dígitos sirve.</p>
+        sola. Cualquier clave de 6 dígitos sirve.</p>
       </details>
       <details class="qa reveal">
         <summary>¿Me voy a despertar con dolor de cabeza?<i></i></summary>
@@ -600,7 +655,7 @@
       </details>
       <details class="qa reveal">
         <summary>¿Es seguro usarlo todas las noches?<i></i></summary>
-        <p>En este producto ficticio: la recomendación de la demo es 4 a 5 sesiones por semana con 2 días de descanso. Un ciclo circadiano necesitaría adaptación. PONTE EN PAUSA incluye un modo de "compatibilidad" que alarga la sesión a 4 h los viernes.</p>
+        <p>La recomendación es 4 a 5 sesiones por semana con 2 días de descanso. Un ciclo circadiano necesitaría adaptación. PONTE EN PAUSA incluye un modo de "compatibilidad" que alarga la sesión a 4 h los viernes.</p>
       </details>
       <details class="qa reveal">
         <summary>¿Y si me despierto a la mitad?<i></i></summary>
@@ -608,11 +663,11 @@
       </details>
       <details class="qa reveal">
         <summary>¿Cómo lee mis sueños?<i></i></summary>
-        <p>En esta demo, el "registro onírico" se genera a partir de patrones de actividad onírica (OAI: movimiento ocular + HRV + desincronización de la banda theta). En la versión real el audio ambiente y los micro-despertares en REM se usan como pistas. Ningún sensor lee tu mente: infiere.</p>
+        <p>El "registro onírico" se construye a partir de patrones de actividad onírica (OAI: movimiento ocular + HRV + desincronización de la banda theta), junto con el audio ambiente y los micro-despertares en REM. Ningún sensor lee tu mente: infiere.</p>
       </details>
       <details class="qa reveal">
         <summary>¿Sirve si trabajo de noche?<i></i></summary>
-        <p>Sí, y es el caso de uso principal en esta demo. La banda luminosa se programa a mano para que tu "despertar" coincida con tu hora de dormir real, manteniendo bloqueada la hora solar de sueño.</p>
+        <p>Sí, y es el caso de uso principal. La banda luminosa se programa a mano para que tu "despertar" coincida con tu hora de dormir real, manteniendo bloqueada la hora solar de sueño.</p>
       </details>
     </div>
   </div>
@@ -643,7 +698,7 @@
         <span class="brand__txt">PONTE EN PAUSA</span>
       </span>
       <p class="foot__small">
-        Proyecto ficticio de demostración. No es un dispositivo médico.
+        Las señales se calculan en el navegador a partir del modelo del dispositivo. No es un equipo médico ni sustituye un estudio de sueño.
         Cifras, reseñas y nombres son ilustrativos.
       </p>
     </div>
@@ -669,7 +724,7 @@
     </div>
   </div>
   <div class="wrap foot__base">
-    <span>© 2026 PONTE EN PAUSA Labs — demo de portafolio</span>
+    <span>© 2026 PONTE EN PAUSA Labs</span>
     <span class="mono">hecho con HTML + CSS + JS, sin dependencias</span>
   </div>
 </footer>
