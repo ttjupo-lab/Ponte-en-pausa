@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PONTE EN PAUSA — 10 horas de sueño en 3</title>
+<meta name="description" content="PONTE EN PAUSA es la máscara que comprime tu ciclo de sueño completo en 3 horas. Sensoría clínica, corte de línea con recuperación automática y cero resaca." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>" />
+</head>
+<body>
+
+<canvas id="bg-neural" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#inicio" class="brand">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32"><path d="M22 4a12 12 0 1 0 6 20A13 13 0 0 1 22 4Z"/></svg>
+      </span>
+      <span class="brand__txt">PONTE EN PAUSA</span>
+    </a>
+
+    <nav class="nav__links" id="nav-links" aria-label="Principal">
+      <a href="#problema">Problema</a>
+      <a href="#como">Cómo funciona</a>
+      <a href="#ciencia">Tecnología</a>
+      <a href="#panel">Conectar</a>
+      <a href="#precios">Precios</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a href="#panel" class="btn btn--ghost btn--sm" data-open-panel>Conectar mi máscara</a>
+      <a href="#precios" class="btn btn--sm">Comprar</a>
+    </div>
+
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero" id="inicio">
+  <div class="wrap hero__grid">
+
+    <div class="hero__copy">
+      <div class="pill reveal">
+        <span class="pill__dot"></span> PONTE EN PAUSA v3.0 · Sensor EEG frontal de 4 canales
+      </div>
+
+      <h1 class="reveal" data-delay="1">
+        Póntela.<br />
+        <span class="grad">Ponte en pausa</span><br />
+        <span class="mono h1__sub">3 h de sesión → 10 h de sueño</span>
+      </h1>
+
+      <p class="lede reveal" data-delay="2">
+        20 minutos para relajarte, 15 de corte de línea con recuperación automática y
+        145 de compresión pura: cuatro ciclos completos de sueño en una sola sesión.
+        Despiertas descansado, sin groggy, sin dolor de cabeza y sin esa sensación de
+        "haber dormido 20 minutos".
+      </p>
+
+      <div class="hero__actions reveal" data-delay="3">
+        <a href="#precios" class="btn btn--lg">Reservar por $49</a>
+        <a href="#panel" class="btn btn--outline btn--lg" data-open-panel>
+          Conectar y ver mis sueños
+        </a>
+      </div>
+
+      <dl class="stats reveal" data-delay="4">
+        <div><dt>3:00</dt><dd>sesión real, con corte incluido</dd></div>
+        <div><dt>10 h</dt><dd>de sueño equivalente</dd></div>
+        <div><dt>4</dt><dd>ciclos de sueño completos</dd></div>
+        <div><dt>4.9/5</dt><dd>1 284 estudiantes</dd></div>
+      </dl>
+    </div>
+
+    <!-- producto -->
+    <div class="hero__stage reveal" data-delay="2">
+      <div class="stage__glow" aria-hidden="true"></div>
+
+      <svg class="mask" viewBox="0 0 460 240" role="img" aria-label="Máscara PONTE EN PAUSA">
+        <defs>
+          <linearGradient id="shell" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0"   stop-color="#2b2f52"/>
+            <stop offset="0.5" stop-color="#151834"/>
+            <stop offset="1"   stop-color="#0b0d1c"/>
+          </linearGradient>
+          <linearGradient id="band" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0"   stop-color="#35e0f0"/>
+            <stop offset="0.5" stop-color="#7c5cff"/>
+            <stop offset="1"   stop-color="#ff5ea8"/>
+          </linearGradient>
+          <radialGradient id="lens" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0"   stop-color="#7c5cff" stop-opacity="0.45"/>
+            <stop offset="1"   stop-color="#7c5cff" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="7" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- straps -->
+        <path class="mask__strap" d="M52 96 8 78"  stroke="url(#shell)" stroke-width="16" stroke-linecap="round" fill="none"/>
+        <path class="mask__strap" d="M408 96 452 78" stroke="url(#shell)" stroke-width="16" stroke-linecap="round" fill="none"/>
+
+        <!-- cuerpo -->
+        <path d="M64 120C64 74 128 46 230 46s166 28 166 74-64 74-166 74S64 166 64 120Z" fill="url(#shell)" stroke="#3b4173" stroke-width="1.5"/>
+        <path d="M64 120C64 74 128 46 230 46s166 28 166 74-64 74-166 74S64 166 64 120Z" fill="url(#lens)"/>
+
+        <!-- zona deBiosensores -->
+        <path d="M104 122C104 100 156 86 230 86s126 14 126 36-52 36-126 36-126-14-126-36Z" fill="#0a0c1a" stroke="#2a2f57"/>
+
+        <!-- electrodos -->
+        <g fill="#35e0f0" filter="url(#soft)">
+          <circle class="mask__dot" cx="158" cy="118" r="3.4"/>
+          <circle class="mask__dot" cx="196" cy="110" r="3.4"/>
+          <circle class="mask__dot" cx="264" cy="110" r="3.4"/>
+          <circle class="mask__dot" cx="302" cy="118" r="3.4"/>
+        </g>
+
+        <!-- banda luminosa -->
+        <path class="mask__band" d="M118 140C118 128 168 120 230 120s112 8 112 20-50 20-112 20-112-8-112-20Z" fill="url(#band)" filter="url(#soft)"/>
+
+        <!-- logo -->
+        <g class="mask__logo" opacity="0.75">
+          <circle cx="230" cy="164" r="7" fill="none" stroke="#6f77ad" stroke-width="1.2"/>
+          <circle cx="230" cy="164" r="2" fill="#6f77ad"/>
+        </g>
+      </svg>
+
+      <div class="chip chip--tl">
+        <span class="chip__k">Fase actual</span>
+        <span class="chip__v" data-live="phase">—</span>
+      </div>
+      <div class="chip chip--tr">
+        <span class="chip__k">HRV</span>
+        <span class="chip__v mono" data-live="hrv">—</span>
+      </div>
+      <div class="chip chip--bl">
+        <span class="chip__k">Ritmo cerebral</span>
+        <span class="chip__v mono" data-live="band">—</span>
+      </div>
+      <div class="chip chip--br">
+        <span class="chip__k">Despertar</span>
+        <span class="chip__v mono" data-live="wake">en 03:00:00</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Universidad Central</span><span>·</span><span>Instituto Tecnológico</span><span>·</span>
+      <span>Campus Norte</span><span>·</span><span>UTM</span><span>·</span>
+      <span>Universidad de los Andes</span><span>·</span>
+      <span>Universidad Central</span><span>·</span><span>Instituto Tecnológico</span><span>·</span>
+      <span>Campus Norte</span><span>·</span><span>UTM</span><span>·</span>
+      <span>Universidad de los Andes</span><span>·</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PROBLEMA ═══════════════ -->
+<section class="section" id="problema">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="eyebrow">El problema</span>
+      <h2>No te falta tiempo. Te sobra vigilia.</h2>
+      <p class="lede">
+        Entre clases, trabajos grupales, exámenes y trabajos de medio tiempo, tus 8 horas
+        de sueño se converts en 4 y media — y con 4 y media no aprendes nada.
+      </p>
+    </header>
+
+    <div class="cards cards--2">
+      <article class="card card--bad reveal">
+        <h3>La noche normal</h3>
+        <div class="bar"><span class="bar__fill" style="--w:38%"></span></div>
+        <ul class="ticks ticks--bad">
+          <li>Solo completas 1.5 ciclos REM</li>
+          <li>Te duermes en clase a las 10:40</li>
+          <li>4.5 h de sueño = 1.8 h de memoria consolidada</li>
+          <li>Recuperas cuerpo, no aprendizaje</li>
+        </ul>
+      </article>
+
+      <article class="card card--good reveal" data-delay="1">
+        <h3>Sesión PONTE EN PAUSA de 3 h</h3>
+        <div class="bar"><span class="bar__fill" style="--w:100%"></span></div>
+        <ul class="ticks ticks--good">
+          <li>20 min de relajación + 15 de corte de línea</li>
+          <li>4 ciclos completos: N3, spindles y REM</li>
+          <li>2 ciclos REM con recuerdo onírico recuperable</li>
+          <li>10 h equivalentes de consolidación</li>
+          <li>Despiertas en la fase más ligera, sin groggy</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CÓMO FUNCIONA ═══════════════ -->
+<section class="section section--alt" id="como">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="eyebrow">Cómo funciona</span>
+      <h2>Tres horas exactas. Tres bloques. Cero sobresaltos.</h2>
+      <p class="lede">
+        La sesión siempre dura 180 minutos. Ni uno más, ni uno menos: el reparto es fijo
+        para que tu cuerpo aprenda el horario.
+      </p>
+    </header>
+
+    <ol class="steps steps--3">
+      <li class="step reveal">
+        <span class="step__n">01 · 0 – 20 min</span>
+        <h3>Relajación y consolidación</h3>
+        <p class="mono step__time">20 minutos</p>
+        <p>La banda emite luz pulsante de 8 Hz y un campo magnético suave que te mete en
+        theta en menos de 8 minutos. Aquí <strong>no duermes todavía</strong>: el cerebro
+        baja revoluciones, baja la frecuencia cardíaca y empieza a consolidar lo que
+        estudiaste. Es la parte que la mayoría de las máscaras se salta.</p>
+      </li>
+      <li class="step step--cut reveal" data-delay="1">
+        <span class="step__n">02 · 20 – 35 min</span>
+        <h3>Corte de línea</h3>
+        <p class="mono step__time">15 minutos de recuperación</p>
+        <p>A los 20 minutos la máscara <strong>corta la línea de sueño a propósito</strong>:
+        la señal del EEG se aplana por completo y el panel se queda sin datos. No es una
+        falla, es el protocolo. En esos 15 minutos el sistema se desacopla de tu EEG,
+        recalibra los electrodos y recompone la señal desde cero.</p>
+      </li>
+      <li class="step reveal" data-delay="2">
+        <span class="step__n">03 · 35 – 180 min</span>
+        <h3>Compresión pura</h3>
+        <p class="mono step__time">145 minutos · 4 ciclos</p>
+        <p>Cuatro ciclos completos de <strong>onda lenta → spindles → REM</strong> con los
+        spindle-sounds de 13.5 Hz sincronizados a los picos de onda lenta. Aquí es donde tu
+        memoria se escribe a disco. La alarma solo abre en N1, por eso sales limpio.</p>
+      </li>
+    </ol>
+
+    <div class="timeline reveal">
+      <span class="timeline__k">Reparto de la sesión</span>
+      <div class="timeline__bar">
+        <span class="timeline__seg timeline__seg--rel" style="--w:11.1%"><i>Relajación</i><b>20 min</b></span>
+        <span class="timeline__seg timeline__seg--cut" style="--w:8.3%"><i>Corte</i><b>15 min</b></span>
+        <span class="timeline__seg timeline__seg--deep" style="--w:37.8%"><i>N3 profunda</i><b>68 min</b></span>
+        <span class="timeline__seg timeline__seg--rem" style="--w:21.1%"><i>REM</i><b>38 min</b></span>
+        <span class="timeline__seg timeline__seg--light" style="--w:16.1%"><i>N1 / N2</i><b>29 min</b></span>
+        <span class="timeline__seg timeline__seg--wake" style="--w:5.6%"><i>Despertar</i><b>10 min</b></span>
+      </div>
+      <span class="timeline__k mono">3:00:00</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TECNOLOGÍA ═══════════════ -->
+<section class="section" id="ciencia">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="eyebrow">Tecnología</span>
+      <h2>Seis sensores, un solo chip</h2>
+      <p class="lede">Todo el procesamiento ocurre en la máscara. Bluetooth solo para sincronizar el informe.</p>
+    </header>
+
+    <div class="specs">
+      <div class="spec reveal">
+        <span class="spec__ico">〰</span>
+        <h3>EEG 4 canales</h3>
+        <p>AF7, AF3, F7, F8 a 256 Hz. Extrae delta, theta, alpha, sigma y beta en tiempo real.</p>
+      </div>
+      <div class="spec reveal" data-delay="1">
+        <span class="spec__ico">◈</span>
+        <h3>HRV + FC</h3>
+        <p>Frecuencia cardíaca y variabilidad beat-a-beat. Detecta estrés pre-dormir y microdespertares.</p>
+      </div>
+      <div class="spec reveal" data-delay="2">
+        <span class="spec__ico">◉</span>
+        <h3>SpO₂ + IR</h3>
+        <p>Oxígeno e irritación infrarroja de 2 longitudes de onda. Alerta si pierdes más del 12 %.</p>
+      </div>
+      <div class="spec reveal" data-delay="3">
+        <span class="spec__ico">◇</span>
+        <h3>IMU 6 ejes</h3>
+        <p>Acelerómetro y giroscopio. Distingue movimiento real de artefacto y corrige tu posición de la máscara.</p>
+      </div>
+      <div class="spec reveal" data-delay="4">
+        <span class="spec__ico">◎</span>
+        <h3>Termopiel</h3>
+        <p>3 zonas: frente, párpado y mejilla. Regula la temperatura de la bisagra para que no te despiertes con frío.</p>
+      </div>
+      <div class="spec reveal" data-delay="5">
+        <span class="spec__ico">✷</span>
+        <h3>Banda lumínica</h3>
+        <p>42 LEDs RGBW de 0.1 % de nitidez. Estimulación luminosa real para tu reloj circadiano.</p>
+      </div>
+    </div>
+
+    <div class="note reveal">
+      <strong>Disclaimer:</strong> PONTE EN PAUSA es un producto ficticio creado como demo de diseño.
+      No es un dispositivo médico y todas las cifras son ilustrativas.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PANEL / CONECTAR ═══════════════ -->
+<section class="section section--alt" id="panel">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="eyebrow">Conecta tu máscara</span>
+      <h2>Tus sueños, en datos.</h2>
+      <p class="lede">
+        Empareja la máscara por Bluetooth y este panel lee su telemetría en vivo: señal cerebral,
+        fases, calidad de sueño y el registro de lo que soñaste.
+      </p>
+    </header>
+
+    <div class="panel reveal" id="device-panel">
+
+      <!-- lateral -->
+      <aside class="panel__side">
+        <div class="dev">
+          <div class="dev__art" aria-hidden="true">
+            <svg viewBox="0 0 460 240">
+              <path d="M64 120C64 74 128 46 230 46s166 28 166 74-64 74-166 74S64 166 64 120Z" fill="url(#shell)" stroke="#3b4173"/>
+              <path d="M104 122C104 100 156 86 230 86s126 14 126 36-52 36-126 36-126-14-126-36Z" fill="#0a0c1a" stroke="#2a2f57"/>
+              <path class="mask__band" d="M118 140C118 128 168 120 230 120s112 8 112 20-50 20-112 20-112-8-112-20Z" fill="url(#band)"/>
+            </svg>
+          </div>
+
+          <div class="dev__id">
+            <span class="dev__name" data-dev="name">PAUSA-01</span>
+            <span class="dev__mac mono" data-dev="mac">—</span>
+          </div>
+
+          <div class="status" data-status>
+            <span class="status__dot"></span>
+            <span class="status__txt">Sin conectar</span>
+          </div>
+
+          <p class="dev__hint" data-hint>
+            Pulsa el botón físico de tu máscara hasta que el LED parpadee en azul y empareja aquí.
+          </p>
+
+          <div class="found" data-found hidden>
+            <span class="found__k">Dispositivos cercanos</span>
+            <ul class="found__list" data-found-list></ul>
+          </div>
+
+          <div class="dev__actions">
+            <button class="btn btn--block" data-scan>Buscar dispositivos</button>
+            <button class="btn btn--ghost btn--block" data-session disabled>Iniciar sesión de 3 h</button>
+            <button class="speed" data-speed aria-live="polite">
+              <span class="speed__k">Periodo de sesión</span>
+              <span class="speed__v mono" data-speed-txt>Prueba · 1 min</span>
+            </button>
+            <p class="speed__note" data-mode-note>Prueba de 1 min reales · protocolo a escala · las líneas avanzan en tiempo real</p>
+          </div>
+
+          <div class="battery">
+            <span>Batería</span>
+            <span class="battery__bar"><i data-bat style="--lvl:86%"></i></span>
+            <span class="mono" data-bat-txt>86 %</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- contenido -->
+      <div class="panel__main">
+        <div class="tabs" role="tablist">
+          <button class="tab is-on" data-tab="live"   role="tab">Señal en vivo</button>
+          <button class="tab"       data-tab="fases"  role="tab">Fases</button>
+          <button class="tab"       data-tab="suenos" role="tab">Mis sueños</button>
+          <button class="tab"       data-tab="reporte"role="tab">Reporte</button>
+        </div>
+
+        <!-- live -->
+        <div class="pane is-on" data-pane="live">
+          <div class="eeg">
+            <div class="eeg__head">
+              <span class="mono">EEG · 4 canales · 256 Hz</span>
+              <span class="eeg__band mono" data-live="band">—</span>
+            </div>
+            <canvas id="eeg-canvas" height="200"></canvas>
+          </div>
+
+          <div class="gauges">
+            <div class="gauge"><span class="gauge__k">Fase</span><span class="gauge__v" data-live="phase">—</span></div>
+            <div class="gauge"><span class="gauge__k">FC</span><span class="gauge__v mono" data-live="hr">—</span></div>
+            <div class="gauge"><span class="gauge__k">HRV</span><span class="gauge__v mono" data-live="hrv">—</span></div>
+            <div class="gauge"><span class="gauge__k">SpO₂</span><span class="gauge__v mono" data-live="spo2">—</span></div>
+            <div class="gauge"><span class="gauge__k">Temp. párpado</span><span class="gauge__v mono" data-live="temp">—</span></div>
+            <div class="gauge"><span class="gauge__k">Restantes</span><span class="gauge__v mono" data-live="left">—</span></div>
+          </div>
+        </div>
+
+        <!-- fases -->
+        <div class="pane" data-pane="fases">
+          <div class="hypno">
+            <canvas id="hypno-canvas" height="150"></canvas>
+            <div class="hypno__legend">
+              <span><i style="--c:#4a5aa8"></i>Despertar</span>
+              <span><i style="--c:#35e0f0"></i>N1 / N2</span>
+              <span><i style="--c:#7c5cff"></i>N3 profundo</span>
+              <span><i style="--c:#ff5ea8"></i>REM</span>
+            </div>
+          </div>
+          <div class="blocks" data-blocks></div>
+        </div>
+
+        <!-- sueños -->
+        <div class="pane" data-pane="suenos">
+          <div class="dreams" data-dreams>
+            <div class="empty">
+              <span class="empty__ico">☾</span>
+              <p>Conecta la máscara e inicia una sesión para registrar tus sueños.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- reporte -->
+        <div class="pane" data-pane="reporte">
+          <div class="report" data-report>
+            <div class="empty">
+              <span class="empty__ico">◷</span>
+              <p>Tu informe de la noche aparecerá aquí al terminar la sesión.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ MODAL DE EMPAREJAMIENTO ═══ -->
+    <div class="pair" data-pair hidden>
+      <form class="pair__box" data-pair-form role="dialog" aria-modal="true" aria-labelledby="pair-title">
+        <button type="button" class="pair__x" data-pair-cancel aria-label="Cancelar emparejamiento">✕</button>
+
+        <span class="eyebrow">Emparejamiento seguro</span>
+        <h3 id="pair-title">Vincular <b data-pair-name>PAUSA-01</b></h3>
+
+        <div class="pair__dev">
+          <span class="pair__mac mono" data-pair-mac>—</span>
+          <span class="pair__rssi mono" data-pair-rssi>—</span>
+        </div>
+
+        <p class="pair__p">
+          Escribe la <b>clave de 6 dígitos</b> impresa en la parte de abajo de tu máscara,
+          justo debajo del sensor térmico. Se valida una sola vez y luego queda guardada
+          en el dispositivo.
+        </p>
+
+        <div class="pair__field">
+          <input class="pair__input mono" data-pair-input type="text" inputmode="numeric"
+                 autocomplete="off" maxlength="6" placeholder="••••••"
+                 aria-label="Clave de 6 dígitos" />
+          <button class="btn" type="submit">Vincular</button>
+        </div>
+
+        <p class="pair__err" data-pair-err hidden></p>
+        <p class="pair__hint">
+          <b>Demo:</b> cualquier clave de 6 dígitos conecta el dispositivo.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PRECIOS ═══════════════ -->
+<section class="section" id="precios">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="eyebrow">Precios</span>
+      <h2>Elige tu horario</h2>
+      <p class="lede">Reserva hoy, paga al recibir. 30 días de prueba o te devolvemos el dinero.</p>
+    </header>
+
+    <div class="plans">
+      <article class="plan reveal">
+        <h3 class="plan__name">PONTE EN PAUSA One</h3>
+        <p class="plan__desc">El dispositivo. Todo lo esencial.</p>
+        <p class="plan__price"><span class="mono">$249</span> <small>una vez</small></p>
+        <ul class="ticks">
+          <li>Sesiones de 3 h y 4 h</li>
+          <li>App con informe de sueño</li>
+          <li>Registro onírico básico</li>
+          <li>1 año de garantía</li>
+        </ul>
+        <a href="#" class="btn btn--outline btn--block">Comprar</a>
+      </article>
+
+      <article class="plan plan--hot reveal" data-delay="1">
+        <span class="plan__flag">El más elegido por estudiantes</span>
+        <h3 class="plan__name">PONTE EN PAUSA Pro</h3>
+        <p class="plan__desc">Más autonomía de batería y la IA de sueños.</p>
+        <p class="plan__price"><span class="mono">$379</span> <small>+ $5.99/mes</small></p>
+        <ul class="ticks">
+          <li>Todo lo de One</li>
+          <li>Crónica de sueños escrita por IA</li>
+          <li>Spindle-sounds de memoria (14 perfiles)</li>
+          <li>Modo biblioteca: 6 tipos de examen</li>
+          <li>3 años de garantía + repuestos</li>
+        </ul>
+        <a href="#" class="btn btn--block">Reservar por $49</a>
+      </article>
+
+      <article class="plan reveal" data-delay="2">
+        <h3 class="plan__name">PONTE EN PAUSA Campus</h3>
+        <p class="plan__desc">Para universidades y bibliotecas.</p>
+        <p class="plan__price"><span class="mono">A medida</span></p>
+        <ul class="ticks">
+          <li>Volumen desde 25 unidades</li>
+          <li>Panel docente de estadísticas</li>
+          <li>Facturación y Licencias centralizadas</li>
+          <li>Soporte con SLA de 24 h</li>
+        </ul>
+        <a href="#" class="btn btn--outline btn--block">Hablar con ventas</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TESTIMONIOS ═══════════════ -->
+<section class="section section--alt">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="eyebrow">Historias</span>
+      <h2>Lo que dicen</h2>
+    </header>
+
+    <div class="quotes">
+      <figure class="quote reveal">
+        <blockquote>"Entré a parcial con 4 horas de sueño y aun así me senté bien. Es la primera vez que el descanso no me cuesta la mañana."</blockquote>
+        <figcaption><b>Mariana, 21</b><span>Diseño industrial · 8vo ciclo</span></figcaption>
+      </figure>
+      <figure class="quote reveal" data-delay="1">
+        <blockquote>"Lo de leer mis sueños es raro pero útil. Me enteré de que siempre sueño la misma secuencia antes de un parcial."</blockquote>
+        <figcaption><b>Iván, 23</b><span>Ingeniería de sistemas · 10mo ciclo</span></figcaption>
+      </figure>
+      <figure class="quote reveal" data-delay="2">
+        <blockquote>"Mi promedio subió 0.6. Duermo 3 h, de verdad duermo 3 h. Parece trampa pero es solo eficiencia."</blockquote>
+        <figcaption><b>Carla, 20</b><span>Medicina · 6to ciclo</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FAQ ═══════════════ -->
+<section class="section" id="faq">
+  <div class="wrap wrap--narrow">
+    <header class="sec-head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Preguntas honestas</h2>
+    </header>
+
+    <div class="faq">
+      <details class="qa reveal">
+        <summary>¿Realmente puedo dormir 10 horas en 3?<i></i></summary>
+        <p>No duermes 10 horas. Duermes 3 horas de sueño <em>real y profundo</em>, con los 4 ciclos completos. La equivalencia está en la densidad: 3 h de sueño de alta calidad consolidan en términos de memoria lo que 8 h fragmentadas no llegan a consolidar. Es lo que hace un animal en hibernación, y funciona porque la onda lenta es la que escribe memoria.</p>
+      </details>
+      <details class="qa reveal">
+        <summary>¿Por qué se corta la línea de sueño a los 20 minutos?<i></i></summary>
+        <p>Es el paso que más cuesta explicar y el que más cambia los resultados. Los
+        primeros 20 minutos tu cerebro todavía está «en línea»: el EEG tiene ruido alto,
+        te mueves, el corazón acelera y la señal no sirve para comprimir nada. A los
+        20 minutos la máscara <strong>corta la línea a propósito</strong> y entra en
+        recuperación durante 15 minutos: los electrodos se desacoplan, se recalibran y
+        reconstruyen la señal desde cero. Cuando el EEG vuelve, es limpio y estable, y
+        recién ahí empiezan los 4 ciclos de compresión. 20 + 15 + 145 = 3 horas exactas,
+        y por eso el corte está en el protocolo y no se puede saltar.</p>
+      </details>
+      <details class="qa reveal">
+        <summary>¿Y si el corte de línea me despierta?<i></i></summary>
+        <p>No puede: durante los 15 minutos de corte la vibración, el audio y la luz están
+        apagados a cero. Además el protocolo exige que estés en N1 o más profundo cuando
+        corta la línea. En 4 sesiones ya ni lo notas — la app registra si hubo movimiento
+        y te lo dice en el reporte.</p>
+      </details>
+      <details class="qa reveal">
+        <summary>¿Cómo le pongo la clave?<i></i></summary>
+        <p>La clave de 6 dígitos va impresa en la parte de abajo de la máscara, debajo del
+        sensor térmico. Al buscar tu máscara en la app te aparece el diálogo de vinculación
+        y la escribes una sola vez: después queda guardada en el dispositivo y se conecta
+        sola. En esta demo de web cualquier clave de 6 dígitos sirve.</p>
+      </details>
+      <details class="qa reveal">
+        <summary>¿Me voy a despertar con dolor de cabeza?<i></i></summary>
+        <p>Ese es exactamente el problema que resolvemos. El dolor de cabeza post-siesta viene de despertarte de un REM profundo con la presión de CO₂ alta. PONTE EN PAUSA nunca te despierta de REM: solo abre la ventana de despertado en N1. Además cierra la válvula de exhalación para evitar el efecto rebote.</p>
+      </details>
+      <details class="qa reveal">
+        <summary>¿Es seguro usarlo todas las noches?<i></i></summary>
+        <p>En este producto ficticio: la recomendación de la demo es 4 a 5 sesiones por semana con 2 días de descanso. Un ciclo circadiano necesitaría adaptación. PONTE EN PAUSA incluye un modo de "compatibilidad" que alarga la sesión a 4 h los viernes.</p>
+      </details>
+      <details class="qa reveal">
+        <summary>¿Y si me despierto a la mitad?<i></i></summary>
+        <p>La máscara detecta el despertar por HRV + movimiento, entra en modo lectura y te devuelve a N1 en un ciclo de 90 segundos. El panel de esta página te muestra la señal en vivo para que veas cómo pasa.</p>
+      </details>
+      <details class="qa reveal">
+        <summary>¿Cómo lee mis sueños?<i></i></summary>
+        <p>En esta demo, el "registro onírico" se genera a partir de patrones de actividad onírica (OAI: movimiento ocular + HRV + desincronización de la banda theta). En la versión real el audio ambiente y los micro-despertares en REM se usan como pistas. Ningún sensor lee tu mente: infiere.</p>
+      </details>
+      <details class="qa reveal">
+        <summary>¿Sirve si trabajo de noche?<i></i></summary>
+        <p>Sí, y es el caso de uso principal en esta demo. La banda luminosa se programa a mano para que tu "despertar" coincida con tu hora de dormir real, manteniendo bloqueada la hora solar de sueño.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA FINAL ═══════════════ -->
+<section class="cta">
+  <div class="wrap cta__inner reveal">
+    <h2>Mañana a las 8 tienes clase.<br />Esta noche decides tú.</h2>
+    <p>Envío gratis a todo el país. 30 días de prueba. Sin preguntas.</p>
+    <div class="cta__actions">
+      <a href="#precios" class="btn btn--lg">Reservar por $49</a>
+      <a href="#panel" class="btn btn--outline btn--lg" data-open-panel>Probar el panel primero</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <div class="foot__col">
+      <span class="brand brand--foot">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32"><path d="M22 4a12 12 0 1 0 6 20A13 13 0 0 1 22 4Z"/></svg>
+        </span>
+        <span class="brand__txt">PONTE EN PAUSA</span>
+      </span>
+      <p class="foot__small">
+        Proyecto ficticio de demostración. No es un dispositivo médico.
+        Cifras, reseñas y nombres son ilustrativos.
+      </p>
+    </div>
+    <div class="foot__col">
+      <h4>Producto</h4>
+      <a href="#como">Cómo funciona</a>
+      <a href="#ciencia">Tecnología</a>
+      <a href="#precios">Precios</a>
+      <a href="#panel">Conectar</a>
+    </div>
+    <div class="foot__col">
+      <h4>Soporte</h4>
+      <a href="#faq">FAQ</a>
+      <a href="#">Garantía</a>
+      <a href="#">Envíos</a>
+      <a href="#">Contacto</a>
+    </div>
+    <div class="foot__col">
+      <h4>Legal</h4>
+      <a href="#">Privacidad</a>
+      <a href="#">Términos</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+  <div class="wrap foot__base">
+    <span>© 2026 PONTE EN PAUSA Labs — demo de portafolio</span>
+    <span class="mono">hecho con HTML + CSS + JS, sin dependencias</span>
+  </div>
+</footer>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/device.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
